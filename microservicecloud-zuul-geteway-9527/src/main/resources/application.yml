@@ -1,0 +1,28 @@
+server:
+  port: 9527
+
+spring:
+   application:
+    name: microservicecloud-zuul-gateway
+
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/  单机版本
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+    instance-id: geteway-9527.com
+    prefer-ip-address: true
+
+zuul:
+  prefix: /webank
+  ignored-services: "*"  #忽略原有微服务名字 *为所有
+  routes:
+    mydept.serviceId: microservicecloud-dept
+    mydept.path: /mydept/**
+
+info:
+    app.name: webank-microservicecloud
+    company.name: webank
+    build.artifactId: ${project.artifactId}  #待处理还有问题
+    build.version: ${project.version}
