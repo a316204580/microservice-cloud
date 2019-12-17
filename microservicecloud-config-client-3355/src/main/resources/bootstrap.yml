@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      name: microservicecloud-config-client
+      profile: dev
+      label: master
+      uri: hhtp://config-3344.com:3344  #本微服务启动，通过gitHub获取
